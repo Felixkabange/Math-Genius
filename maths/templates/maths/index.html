@@ -1,0 +1,134 @@
+{% extends "maths/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %} 
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function App() {
+        // Num1 to 2 is Addition, Num 3 to 4 is Multiplication and Num 5 to 6 is Substraction and Num 7 to 8 is Divisio 
+        const [state, setState] = React.useState({
+        num1: 1,
+        num2: 1,
+        num3: 1,
+        num4: 1,
+        num5: 1,
+        num6: 1,
+        num7: 1,
+        num8: 1,
+        response: "",
+        score: 0
+           });
+
+        function updateResponse(event) {
+          setState({
+        ...state,
+        response: event.target.value
+    });
+      }
+      function inputKeyPress(event) {
+    if (event.key === "Enter") {
+        const answer = parseInt(state.response);
+        if (answer === state.num1 + state.num2) {
+            // User got question right
+            setState({
+                ...state,
+                score: state.score + 1,
+                response: "",
+                num1: Math.floor(Math.random() * 100) + 5,
+                num2: Math.floor(Math.random() * 100) + 1,
+                num3: Math.floor(Math.random() * 100) + 3,
+                num4: Math.floor(Math.random() * 100) + 2,
+                num5: Math.floor(Math.random() * 500) + 2,
+                num6: Math.floor(Math.random() * 300) + 1,
+                num7: Math.floor(Math.random() * 100) + 2,
+                num8: Math.floor(Math.random() * 100) + 1,
+
+            });
+        } else {
+            // User got question wrong
+            setState({
+                ...state,
+                score: state.score - 1,
+                response: ""
+            })
+        }
+    }
+}
+            return (
+                <div class="main_container">
+                    <h1 class="index_heading">Maths Genius</h1> 
+
+                    <button class="btn btn-sm btn-outline-primary" id="addition">Addition</button>
+                    <button class="btn btn-sm btn-outline-primary" id="multiplication">Multiplication</button>
+                    <button class="btn btn-sm btn-outline-primary" id="substraction">Substraction</button>
+                    <button class="btn btn-sm btn-outline-primary" id="division">Division</button>
+
+                    <div id="addition-game">
+                        <div>{state.num1} + {state.num2}</div>
+                        <input onChange={updateResponse} onKeyPress={inputKeyPress} value={state.response} />
+                        <div>Score: {state.score}</div>
+                    </div>
+
+                    <div id="multiplication-game">
+                        <div>{state.num3} * {state.num4}</div>
+                        <input onChange={updateResponse} onKeyPress={inputKeyPress} value={state.response} />
+                        <div>Score: {state.score}</div>
+                    </div>
+                    <div id="substraction-game">
+                        <div>{state.num5} - {state.num6}</div>
+                        <input onChange={updateResponse} onKeyPress={inputKeyPress} value={state.response} />
+                        <div>Score: {state.score}</div>
+                    </div>
+                    <div id="division-game">
+                        <div>{state.num7} / {state.num8}</div>
+                        <input onChange={updateResponse} onKeyPress={inputKeyPress} value={state.response} />
+                        <div>Score: {state.score}</div> 
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.querySelector("#app"));
+
+        // Plain JavaScript for DOM manipulation
+        const additionButton = document.querySelector('#addition');
+        const multiplicationButton = document.querySelector('#multiplication');
+        const subtractionButton = document.querySelector('#substraction');
+        const divisionButton = document.querySelector('#division');
+
+        const additionGame = document.querySelector('#addition-game');
+        const multiplicationGame = document.querySelector('#multiplication-game');
+        const subtractionGame = document.querySelector('#substraction-game');
+        const divisionGame = document.querySelector('#division-game');
+
+        // Function to show a specific game and hide others
+        function showGame(game) {
+            additionGame.style.display = 'none';
+            multiplicationGame.style.display = 'none';
+            subtractionGame.style.display = 'none';
+            divisionGame.style.display = 'none';
+            game.style.display = 'block';
+        }
+
+        // Show the 'addition-game' by default when the page loads
+        showGame(additionGame);
+
+        additionButton.addEventListener('click', () => showGame(additionGame));
+        multiplicationButton.addEventListener('click', () => showGame(multiplicationGame));
+        subtractionButton.addEventListener('click', () => showGame(subtractionGame));
+        divisionButton.addEventListener('click', () => showGame(divisionGame));
+
+    </script>
+{% endblock %}
+

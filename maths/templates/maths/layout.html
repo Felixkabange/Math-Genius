@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %} Maths Genius {% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'maths/styles.css' %}" rel="stylesheet"> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        {% block head %} 
+        <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+    
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            {% if user.is_authenticated %}
+            Signed in as&nbsp;<strong>{{ user.username }}</strong>
+             {% else %}
+             Not signed in.
+            {% endif %}
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+              aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              {% if user.is_authenticated %}
+              <div class="navbar-nav">
+                  <a class="nav-item nav-link active" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-item nav-link" href="{% url 'index' %}">Game </a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+                  {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Log In</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                  {% endif %}
+              </div>
+          </div>
+      </nav>
+      <div class="globe"> 
+        <img src="/static/maths/Star.jpg" alt="Globe Picture"> 
+      </div>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

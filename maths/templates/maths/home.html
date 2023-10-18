@@ -1,0 +1,26 @@
+{% extends "maths/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block body %}
+
+    <h1 class="home_heading"> Welcome to MathGenius </h1>
+
+    <h3 class="home_text">Prepare to embark on a mathematical adventure like no other. 
+        MathGenius presents you with a challenging set of four thrilling games based on the fundamental operations: 
+        Addition, Subtraction, Multiplication and Division. 
+        Sharpen your wits, enhance your number skills, and prove you're the MathGenius we've been waiting for!</h3>
+    
+        <p class="home_footer">To get started, click here to <a href="{% url 'register' %}">Register,</a>  
+            <span style="margin-right: 10px;"></span> 
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        </p>
+        
+        
+        
+
+
+    {% endblock %}

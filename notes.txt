@@ -1,0 +1,24 @@
+Dependecies to add to make react work in this project first install these: 
+
+npm install react react-dom
+npm install @babel/core @babel/preset-react
+
+And then Create a Babel configuration file (babel.config.js):
+
+Create a file named babel.config.js in your project's root directory and add the following configuration:
+
+module.exports = {
+  presets: ['@babel/preset-react'],
+};
+
+Compile your JavaScript code:
+
+You will need to compile your JavaScript code before using it in the Django template. You can use a build tool like Webpack or Babel to compile your React code into a single JavaScript file.
+
+For example, you can use Webpack to bundle your JavaScript code:
+
+npm install webpack webpack-cli --save-dev
+
+And then: 
+<script src="{% static 'path_to_bundle.js' %}"></script>
+

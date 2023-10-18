@@ -1,0 +1,122 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    background-image: url('/static/maths/Planet Galaxy7252117700.jpg');   
+    background-size: cover; /* Adjust the sizing method as needed */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Optional: Fix the background image */
+    background-position: center center; /* Adjust the position as needed */
+    align-items: center; /* This aligns child elements, not the background image itself */
+    height: 100vh; /* Ensure full viewport height for background */
+    transition: all 0.5s;
+
+}
+
+
+.globe {
+    z-index: -5;
+    position: absolute;
+    left: 0; /* Initial position at the left */
+    top: 0; /* Initial position at the top */
+    animation: shootingStar 8s linear infinite; /* Adjust the duration as needed */
+}
+
+.globe img {
+    max-width: 40%;
+    max-height: 40%;
+}
+
+@keyframes shootingStar {
+    0% {
+        left: 0;
+        top: 0;
+        transform: scale(0.10);
+        
+    }
+    50%{
+        top: 60%;
+    }
+
+    100% {
+        left: 50%;
+        top: 50%;
+        transform: scale(0.9);
+    }
+}
+
+
+.navbar.navbar-expand-lg.navbar-dark.bg-dark {
+    color: white;
+}
+
+.navbar-nav{
+    color: white;
+}
+
+.nav-item.nav-link{
+    color: white;
+} 
+
+.home_heading {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: white; 
+
+}
+
+
+.home_text{
+    text-align: center;
+    line-height: 1.5;
+    color: white;
+}
+
+.home_footer{
+    padding-top: 50px;
+    text-align: center;
+    color: white;
+}
+
+#addition-game{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+}
+
+#multiplication-game{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#substraction-game{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+#division-game{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.index_heading{
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.index_footer{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+.main_container {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    height: 100vh; /* Ensure full viewport height for centering */ 
+    font-family: 'Roboto', sans-serif;
+}
